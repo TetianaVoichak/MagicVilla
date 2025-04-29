@@ -70,7 +70,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 4, 28, 21, 21, 50, 669, DateTimeKind.Local).AddTicks(8956),
+                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Details = "Sed ut perspiciatis, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, sunt in culpa qui officia deserunt mollit anim id est laborum!",
                             ImageUrl = "",
                             Name = "Royal Villa",
@@ -83,7 +83,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 4, 28, 21, 21, 50, 672, DateTimeKind.Local).AddTicks(4590),
+                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Details = "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, qui dolorem eum fugiat, quo voluptas nulla pariatur.",
                             ImageUrl = "",
                             Name = "Premium Pool Villa",
@@ -96,7 +96,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 4, 28, 21, 21, 50, 672, DateTimeKind.Local).AddTicks(4613),
+                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Details = "Sed ut perspiciatis, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, sunt in culpa qui officia deserunt mollit anim id est laborum!",
                             ImageUrl = "",
                             Name = "Luxury Pool Villa",
@@ -109,7 +109,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 4, 28, 21, 21, 50, 672, DateTimeKind.Local).AddTicks(4617),
+                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Details = "Et harum quidem rerum facilis est et expedita distinctio, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             ImageUrl = "",
                             Name = "Diamond Villa",
@@ -122,7 +122,7 @@ namespace MagicVilla_VillaAPI.Migrations
                         {
                             Id = 5,
                             Amenity = "",
-                            CreatedDate = new DateTime(2025, 4, 28, 21, 21, 50, 672, DateTimeKind.Local).AddTicks(4620),
+                            CreatedDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Details = "Excepteur sint occaecat cupidatat non proident, consectetur adipiscing elit, quae ab.",
                             ImageUrl = "",
                             Name = "Diamond Pool Villa",

@@ -1,4 +1,4 @@
-﻿using MagicVilla_VillaAPI.Migrations;
+﻿//using MagicVilla_VillaAPI.Migrations;
 using MagicVilla_VillaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -26,7 +26,8 @@ namespace MagicVilla_VillaAPI.Data
                     Rate=200,
                     Sqft=550,
                     Amenity="",
-                    CreatedDate= DateTime.Now,
+                    //CreatedDate= DateTime.Now,
+                    CreatedDate = new DateTime(2023, 01, 01)
                 },
                 new Villa()
                 {
@@ -38,7 +39,7 @@ namespace MagicVilla_VillaAPI.Data
                     Rate = 300,
                     Sqft = 550,
                     Amenity = "",
-                    CreatedDate= DateTime.Now
+                    CreatedDate = new DateTime(2023, 01, 01)
                 },
                 new Villa()
                 {
@@ -51,7 +52,7 @@ namespace MagicVilla_VillaAPI.Data
                     Rate = 300,
                     Sqft = 550,
                     Amenity = "",
-                    CreatedDate= DateTime.Now
+                    CreatedDate = new DateTime(2023, 01, 01)
                 },
                 new Villa()
                 {
@@ -64,7 +65,7 @@ namespace MagicVilla_VillaAPI.Data
                     Rate = 550,
                     Sqft = 900,
                     Amenity = "",
-                    CreatedDate = DateTime.Now
+                    CreatedDate = new DateTime(2023, 01, 01)
                 },
                 new Villa()
                  {
@@ -77,8 +78,8 @@ namespace MagicVilla_VillaAPI.Data
                      Rate = 660,
                      Sqft = 1100,
                      Amenity = "",
-                     CreatedDate= DateTime.Now
-                 }
+                    CreatedDate = new DateTime(2023, 01, 01)
+                }
             );
 
         }
