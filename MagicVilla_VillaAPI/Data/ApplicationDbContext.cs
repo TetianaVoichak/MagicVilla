@@ -13,6 +13,8 @@ namespace MagicVilla_VillaAPI.Data
 
         }
         public DbSet<Villa> Villas { get; set; }
+
+        //method of automatically creating a database with data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Villa>().HasData(

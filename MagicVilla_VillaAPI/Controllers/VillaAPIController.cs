@@ -103,7 +103,7 @@ namespace MagicVilla_VillaAPI.Controllers
             _db.SaveChanges();
             return NoContent();
         }
-        [HttpPut("{id:int}", Name = "UpdateVilla")] // в скобках маршрут для запроса
+        [HttpPut("{id:int}", Name = "UpdateVilla")] // the route for the request
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult UpdateVilla(int id, [FromBody]VillaDTO villaDTO)
@@ -128,7 +128,7 @@ namespace MagicVilla_VillaAPI.Controllers
             _db.Villas.Update(model);
             _db.SaveChanges();
 
-            return NoContent();//успешный ответ
+            return NoContent();//successful response
 
         }
 
