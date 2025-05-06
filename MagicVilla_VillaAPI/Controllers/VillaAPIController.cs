@@ -5,6 +5,7 @@ using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Data;
 using Microsoft.AspNetCore.JsonPatch;
 using MagicVilla_VillaAPI.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
@@ -143,8 +144,12 @@ namespace MagicVilla_VillaAPI.Controllers
             {
                 return BadRequest();
             }
-            var villa = _db.Villas.FirstOrDefault(u => u.Id == id); //get information about the entity object from the database
 
+            // Fetch the villa with the specified ID from the database.
+            // Use AsNoTracking to improve performance and avoid EF Core tracking this entity,
+            // since we will manually map and update a new instance later.
+            var villa = _db.Villas.AsNoTracking().FirstOrDefault(u => u.Id == id); 
+            
             VillaDTO villaDTO = new()
             {
                 Amenity = villa.Amenity,
