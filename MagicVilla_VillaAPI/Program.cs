@@ -15,6 +15,8 @@ namespace MagicVilla_VillaAPI
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
 
+            builder.Services.AddAutoMapper(typeof(MappingConfig));
+
             builder.Services.AddControllers(option => { option.ReturnHttpNotAcceptable = true; }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters(); // говорим о то что может быть любой формат json, xml... который пользователь настроил
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
