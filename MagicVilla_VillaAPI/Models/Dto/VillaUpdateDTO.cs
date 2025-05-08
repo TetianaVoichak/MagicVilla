@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace MagicVilla_VillaAPI.Models.Dto
 {
-    public class VillaDTO
+    public class VillaUpdateDTO
     {
+        [Required] // error if the field is empty
         public int Id { get; set; }
         [Required] // error if the field is empty
         [MaxLength (30)]
@@ -11,10 +12,11 @@ namespace MagicVilla_VillaAPI.Models.Dto
 
         [Required]
         public double Rate { get; set; }
-
+        [Required]
         public int Occupancy {  get; set; }
-        public int Sqft { get; set; } //площадь
- 
+        [Required]
+        public int Sqft { get; set; } //square
+        [Required]
         public string ImageUrl { get; set; }
         public string Amenity { get; set; }
 
