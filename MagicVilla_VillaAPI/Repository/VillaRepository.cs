@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace MagicVilla_VillaAPI.Repository
 
-{   //implementation of a universal repository for data management for the villa object
+{   //implementation of a universal repository for data management for the Villa object
     //logic of working with the DB
     public class VillaRepository : Repository<Villa>, IVillaRepository
     {

@@ -2,6 +2,10 @@
 
 namespace MagicVilla_VillaAPI.Models
 {
+    /// <summary>
+    ///  Represents a standard format for API responses,
+    ///  including status, success flag, errors, and result data.
+    /// </summary>
     public class APIResponse
     {
         public HttpStatusCode StatusCode { get; set; } 

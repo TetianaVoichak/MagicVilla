@@ -21,7 +21,7 @@ namespace MagicVilla_VillaAPI
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
-            builder.Services.AddControllers(option => { option.ReturnHttpNotAcceptable = true; }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters(); // говорим о то что может быть любой формат json, xml... который пользователь настроил
+            builder.Services.AddControllers(option => { option.ReturnHttpNotAcceptable = true; }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters(); // we are talking about the fact that it can be any format json, xml... that the user has configured
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -38,7 +38,6 @@ namespace MagicVilla_VillaAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
