@@ -8,15 +8,18 @@ namespace MagicVilla_VillaAPI.Data
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) 
+            : base(options)
         {
 
         }
         public DbSet<Villa> Villas { get; set; }
+        public DbSet<VillaNumber> VillaNumbers { get; set; }
 
         //method of automatically creating a database with data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            // Data for the Villas table
             modelBuilder.Entity<Villa>().HasData(
                 new Villa()
                 {
@@ -24,10 +27,10 @@ namespace MagicVilla_VillaAPI.Data
                     Name = "Royal Villa",
                     Details = "Sed ut perspiciatis, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, sunt in culpa qui officia deserunt mollit anim id est laborum!",
                     ImageUrl = "",
-                    Occupancy=5,
-                    Rate=200,
-                    Sqft=550,
-                    Amenity="",
+                    Occupancy = 5,
+                    Rate = 200,
+                    Sqft = 550,
+                    Amenity = "",
                     //CreatedDate= DateTime.Now,
                     CreatedDate = new DateTime(2023, 01, 01)
                 },
@@ -70,21 +73,32 @@ namespace MagicVilla_VillaAPI.Data
                     CreatedDate = new DateTime(2023, 01, 01)
                 },
                 new Villa()
-                 {
+                {
 
-                     Id = 5,
-                     Name = "Diamond Pool Villa",
-                     Details = "Excepteur sint occaecat cupidatat non proident, consectetur adipiscing elit, quae ab.",
-                     ImageUrl = "",
-                     Occupancy = 4,
-                     Rate = 660,
-                     Sqft = 1100,
-                     Amenity = "",
+                    Id = 5,
+                    Name = "Diamond Pool Villa",
+                    Details = "Excepteur sint occaecat cupidatat non proident, consectetur adipiscing elit, quae ab.",
+                    ImageUrl = "",
+                    Occupancy = 4,
+                    Rate = 660,
+                    Sqft = 1100,
+                    Amenity = "",
                     CreatedDate = new DateTime(2023, 01, 01)
                 }
             );
+            // Data for the VillaNumbers table
 
+            modelBuilder.Entity<VillaNumber>().HasData(
+            new VillaNumber
+            {
+                VillaNo = 101,
+                SpecialDetails = "Sea view"
+            },
+            new VillaNumber
+            {
+                VillaNo = 102,
+                SpecialDetails = "Mountain view"
+            });
         }
-        
     }
 }
