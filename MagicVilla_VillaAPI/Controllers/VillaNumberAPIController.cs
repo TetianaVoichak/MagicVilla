@@ -8,7 +8,7 @@ using System.Net;
 
 namespace MagicVilla_VillaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/VillaNumberAPI")]
     [ApiController]
 
 
@@ -33,7 +33,7 @@ namespace MagicVilla_VillaAPI.Controllers
             {
                 //automatically perform data transfer and the correct result will be as a response
                 IEnumerable<VillaNumber> villaList = await _dbVillaNumber.GetAllAsync();
-                _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
+                _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
@@ -67,7 +67,7 @@ namespace MagicVilla_VillaAPI.Controllers
                     return NotFound(_response);
                 }
 
-                _response.Result = _mapper.Map<VillaDTO>(villaNumber);
+                _response.Result = _mapper.Map<VillaNumberDTO>(villaNumber);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }

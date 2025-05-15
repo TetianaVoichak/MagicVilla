@@ -19,6 +19,8 @@ namespace MagicVilla_VillaAPI
 
             builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 
+            builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
+
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
             builder.Services.AddControllers(option => { option.ReturnHttpNotAcceptable = true; }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters(); // we are talking about the fact that it can be any format json, xml... that the user has configured
