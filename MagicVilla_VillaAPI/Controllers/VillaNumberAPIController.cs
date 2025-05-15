@@ -3,6 +3,7 @@ using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.Dto;
 using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -90,7 +91,7 @@ namespace MagicVilla_VillaAPI.Controllers
             {
                 if (await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa already Exists!");
+                    ModelState.AddModelError("CustomError", "Villa Number already Exists!");
                     return BadRequest(ModelState);
                 }
                 if (createDTO == null)
@@ -113,6 +114,107 @@ namespace MagicVilla_VillaAPI.Controllers
                 _response.ErrorMessages = new List<string>() { ex.ToString() };
             }
             return _response;
+        }
+
+        [HttpDelete("{villaNo:int}", Name = "DeleteVillaNumber")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public async Task<ActionResult<APIResponse>> DeleteVillaNumber(int villaNo)
+        {
+            try
+            {
+                if (villaNo == 0)
+                {
+                    return BadRequest();
+                }
+                var villaN = await _dbVillaNumber.GetAsync(u => u.VillaNo == villaNo);
+                if (villaN == null)
+                {
+                    return NotFound();
+                }
+                await _dbVillaNumber.RemoveAsync(villaN);
+
+                _response.Result = _mapper.Map<VillaNumberDTO>(villaN);
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
+
+        }
+        [HttpPut("{villaNo:int}", Name = "UpdateVillaNumber")] // the route for the request
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<APIResponse>> UpdateVillaNumber(int villaNo, [FromBody] VillaNumberUpdateDTO updateDTO)
+        {
+            try
+            {
+                if (updateDTO == null || villaNo != updateDTO.VillaNo)
+                {
+                    return BadRequest();
+                }
+
+                //automatic data transfer process
+                VillaNumber model = _mapper.Map<VillaNumber>(updateDTO);
+
+                await _dbVillaNumber.UpdateAsync(model);
+
+                _response.Result = _mapper.Map<VillaNumberDTO>(model);
+                _response.StatusCode = HttpStatusCode.NoContent;
+                _response.IsSuccess = true;
+                return Ok(_response);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
+
+        }
+
+        [HttpPatch("{villaNo:int}", Name = "UpdatePartialVillaNumber")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public async Task<IActionResult> UpdatePartialVillaNumber(int villaNo, JsonPatchDocument<VillaNumberUpdateDTO> patchDTO)
+        {
+            if (patchDTO == null || villaNo == 0)
+            {
+                return BadRequest();
+            }
+
+            // Fetch the villa number with the specified villaNo from the database.
+            // Use AsNoTracking to improve performance and avoid EF Core tracking this entity,
+            // since we will manually map and update a new instance later.
+            var villa = await _dbVillaNumber.GetAsync(u => u.VillaNo == villaNo, tracked: false);
+
+            VillaNumberUpdateDTO villaDTO = _mapper.Map<VillaNumberUpdateDTO>(villa);
+
+            if (villa == null)
+            {
+                return BadRequest();
+            }
+            patchDTO.ApplyTo(villaDTO, ModelState);
+
+            VillaNumber model = _mapper.Map<VillaNumber>(villaDTO);
+
+
+            await _dbVillaNumber.UpdateAsync(model);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return NoContent();
+
         }
     }
 }
