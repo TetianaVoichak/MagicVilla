@@ -6,7 +6,8 @@ namespace MagicVilla_VillaAPI.Models.Dto
         [Required] // error if the field is empty
         public int VillaNo { get; set; }
         public string SpecialDetails { get; set; }
-       
+
+        public int VillaID { get; set; }
 
     }
 }
