@@ -49,3 +49,6 @@ node_modules/
 
 # NPM package manager files
 node_modules/
+
+appsettings.json
+
